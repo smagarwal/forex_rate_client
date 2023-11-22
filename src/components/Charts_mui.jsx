@@ -22,9 +22,9 @@ export default function SimpleAreaChart({rows, displayCurr}) {
 
 
   return (
+
     <LineChart
-      width={500}
-      height={300}
+      height= {500}
       series={[{ data: uData, label: `1 ${chartTitle[0]} equals ${chartTitle[1]}`, area: true, showMark: true }]}
       xAxis={[{ label: 'Hrs', scaleType: 'point', data: xLabels }]}
       yAxis={[

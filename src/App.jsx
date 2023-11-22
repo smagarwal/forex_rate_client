@@ -57,45 +57,47 @@ function App() {
 
 
   return (
-    <div className=" flex flex-col items-center min-h-screen bg-cover bg-center " style={{ backgroundImage: "url('/bg.svg')" }}>
 
-      <div className='pt-10 mx-auto'>
-        <ResponsiveDatePickers minDate= {minDate} maxDate={maxDate} selectDate={selectDate} defaultDate={defaultDate}/> 
+    <div className="flex flex-col items-center min-h-screen bg-cover bg-center " style={{ backgroundImage: "url('/bg.svg')" }} >
 
-      </div>
+        <div className='pt-10 mx-auto'>
+          <ResponsiveDatePickers minDate= {minDate} maxDate={maxDate} selectDate={selectDate} defaultDate={defaultDate}/> 
+        </div>
 
-      <div className='py-5 mx-auto'>
+        <div className='py-5 mx-auto'>
 
-        <VariantButtonGroup selectCurr={selectCurr}/>
+          <VariantButtonGroup selectCurr={selectCurr}/>
 
-      </div>
+        </div>
 
-      {isLoading && (
+        {isLoading && (
 
-        <AlertDialog 
-        openIt={true} 
-        closeInstruction={()=>{setIsLoading(false)}} 
-        title={"Loading..."} 
-        contentText={"This might take a few seconds. Please wait..."}/>
+          <AlertDialog 
+          openIt={true} 
+          closeInstruction={()=>{setIsLoading(false)}} 
+          title={"Loading..."} 
+          contentText={"This might take a few seconds. Please wait..."}/>
 
-      )}
+        )}
 
-      {displayData.length > 0 && (
-        <>
-          <div> 
-            <SimpleAreaChart rows={displayData} displayCurr={curr}/>
-          </div>
+        {displayData.length > 0 && (
+          <>
 
-          <div> 
-           <CustomizedTables rows={displayData} displayCurr={curr}/>
-          </div>
-         
-        </>
+            <div style={{ width: "100%" }}>
 
-      )}
+              <SimpleAreaChart rows={displayData} displayCurr={curr}/>
 
+            </div>
+
+            <div>
+
+            <CustomizedTables rows={displayData} displayCurr={curr}/>
+
+            </div>
+          </>
+
+        )}
     </div>
-
   );
 }
 
