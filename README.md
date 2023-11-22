@@ -1,8 +1,14 @@
-# React + Vite
+# Forex Data Collection and Display
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project focuses on collecting Forex rate data using AWS Lambda, storing the data in AWS DynamoDB, and creating a React frontend with an Express backend. The goal is to display retrieved data based on user selection of dates and currencies. The data is present in an Chart and Tabular format.
 
-Currently, two official plugins are available:
+## Try it Live
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Explore the live application [here](https://fx-client.pages.dev/).
+
+## Project Overview
+
+- **Data Collection:** Utilizes AWS Lambda to collect Forex data at regular intervals (every hour).
+- **Data Storage:** Stores collected data in AWS DynamoDB, ensuring reliability and scalability.
+- **User Interface:** A React frontend allows users to interact with the data by selecting specific dates and currencies.
+- **Backend API:** An Express backend serves as the API, retrieving and delivering data based on user requests.
