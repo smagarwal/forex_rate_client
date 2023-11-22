@@ -6,6 +6,7 @@ import SimpleAreaChart from './components/Charts_mui'
 import VariantButtonGroup from './components/Button_group'
 import fData from './lib/FormattedData';
 import dayjs from 'dayjs';
+import AlertDialog from './components/AlertDialog'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
   const defaultDate = dayjs('2023-11-08');
   const [dateVal, setDateVal] = useState(defaultDate.format('YYYY-MM-DD')); 
   const [displayData, setDisplayData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); 
 
   function selectCurr(value){
     //based on the date value 
@@ -23,6 +25,7 @@ function App() {
 
   function selectDate(date){
     setDateVal(date.format('YYYY-MM-DD'));
+    setIsLoading(true);
   } 
 
   //set the display array as per the selected currency value
@@ -35,6 +38,7 @@ function App() {
         const resp = await fData.getDisplayData(dateVal, curr);
   
         setDisplayData(resp);
+        setIsLoading(false);
   
       }catch (err){
 
@@ -66,6 +70,15 @@ function App() {
 
       </div>
 
+      {isLoading && (
+
+        <AlertDialog 
+        openIt={true} 
+        closeInstruction={()=>{setIsLoading(false)}} 
+        title={"Loading..."} 
+        contentText={"This might take a few seconds. Please wait..."}/>
+
+      )}
 
       {displayData.length > 0 && (
         <>
